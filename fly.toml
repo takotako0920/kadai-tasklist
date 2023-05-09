@@ -1,0 +1,32 @@
+# fly.toml app configuration file generated for withered-wood-1775 on 2023-05-08T08:09:15Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "withered-wood-1775"
+primary_region = "nrt"
+
+[build]
+  [build.args]
+    NODE_VERSION = "18"
+    PHP_VERSION = "8.1"
+
+[env]
+  APP_DEBUG = "true"
+  APP_ENV = "production"
+  APP_NAME = "Laravel"
+  APP_URL = "https://withered-wood-1775.fly.dev"
+  DB_CONNECTION = "pgsql"
+  DB_DATABASE = "postgres"
+  DB_HOST = "db.lyayfszrlgubopihoqnj.supabase.co"
+  DB_PORT = "5432"
+  DB_USERNAME = "postgres"
+  LOG_CHANNEL = "stderr"
+  LOG_LEVEL = "info"
+  LOG_STDERR_FORMATTER = "Monolog\\Formatter\\JsonFormatter"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
