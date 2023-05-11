@@ -109,6 +109,8 @@ class TasksController extends Controller
     // putまたはpatchでtasks/（任意のid）にアクセスされた場合の「更新処理」
     public function update(Request $request, $id)
     {
+        $task = Task::findOrFail($id); // $task変数を追加
+        
         if (\Auth::user()->id == $task->user_id) {
         // ログインユーザーとタスクの所有者が一致する場合のみ更新処理を実行
         // 以下、更新処理のコードを追加してください
