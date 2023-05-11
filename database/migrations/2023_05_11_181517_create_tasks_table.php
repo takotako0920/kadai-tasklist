@@ -13,21 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('status',10);
+            $table->string('content');
+            $table->timestamps();
 
+            // 外部キー制約
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('tasks');
     }
 };
